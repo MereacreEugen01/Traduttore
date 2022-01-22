@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onClickTraduci"
     tools:context=".MainActivity">
 
     <TextView
@@ -87,7 +88,7 @@
         app:layout_constraintGuide_percent="0.50" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/testoTradotto"
         android:layout_width="350dp"
         android:layout_height="190dp"
         android:editable="false"
@@ -112,13 +113,14 @@
         app:layout_constraintGuide_end="20dp" />
 
     <Button
-        android:id="@+id/bottonrTraduzione"
+        android:id="@+id/bottoneTraduzione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickTraduci"
         android:text="Traduci"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
