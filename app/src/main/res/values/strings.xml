@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Traduttore</string>
+
+    <string-array name="linguaPartenza">
+        <item>Rileva lingua</item>
+        <item>Inglese</item>
+        <item>Italiano</item>
+        <item>Francese</item>
+        <item>Spagnolo</item>
+    </string-array>
+
+    <string-array name="linguaArrivo">
+        <item>Inglese</item>
+        <item>Italiano</item>
+        <item>Francese</item>
+        <item>Spagnolo</item>
+
+    </string-array>
+
+
+</resources>
