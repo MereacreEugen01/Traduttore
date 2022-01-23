@@ -6,17 +6,58 @@
     android:layout_height="match_parent"
     android:onClick="onClickTraduci"
     tools:context=".MainActivity">
+    <!--
+       <TextView
+           android:id="@+id/testoTradotto"
+           android:layout_width="350dp"
+           android:layout_height="190dp"
+           android:editable="false"
+           android:hint="Testo tradotto"
+           app:layout_constraintBottom_toTopOf="@+id/guideline9"
+           app:layout_constraintEnd_toStartOf="@+id/guideline5"
+           app:layout_constraintStart_toStartOf="@+id/guideline6"
+           app:layout_constraintTop_toTopOf="@+id/guideline7" />
+       -->
+        <com.google.android.material.textfield.TextInputLayout
+           android:layout_width="350dp"
+           android:layout_height="190dp"
+           app:boxStrokeWidth="0dp"
+           app:boxStrokeWidthFocused="0dp"
+           app:layout_constraintBottom_toTopOf="@+id/guideline9"
+           app:layout_constraintEnd_toStartOf="@+id/guideline5"
+           app:layout_constraintStart_toStartOf="@+id/guideline6"
+           app:layout_constraintTop_toTopOf="@+id/guideline7">
 
-    <TextView
-        android:id="@+id/testoDaTradurre"
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/testoTradotto"
+                android:layout_width="350dp"
+                android:layout_height="190dp"
+                android:backgroundTint="@color/white"
+                android:editable="false"
+                android:hint="Testo tradotto"
+                tools:ignore="TextContrastCheck" />
+       </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         android:layout_width="350dp"
         android:layout_height="190dp"
-        android:editable="true"
-        android:hint="Testo da tradurre"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/testoDaTradurre"
+            android:layout_width="350dp"
+            android:layout_height="190dp"
+            android:backgroundTint="@color/white"
+            android:hint="Testo da tradurre " />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/linguaPartenza"
@@ -86,17 +127,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.50" />
-
-    <TextView
-        android:id="@+id/testoTradotto"
-        android:layout_width="350dp"
-        android:layout_height="190dp"
-        android:editable="false"
-        android:hint="Testo tradotto"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
