@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity
                         // Display the first 500 characters of the response string.
                        // textView.setText("Response is: "+ response.substring(0,500));
                         Log.d("API", response);
-                        testoTradotto.setText(response);
+                        String traduzione = response.substring(response.indexOf("\"text\":\"")+8, response.indexOf("\"}]}"));
+                        testoTradotto.setText(traduzione);
 
                     }
                 },
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity
                     {
                         //System.out.println("c'è stato un errore");
                         Log.e("API",error.getLocalizedMessage());
+
                     }
 
                 }
