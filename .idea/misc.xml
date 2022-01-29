@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ProgettiAndroid/Traduttore/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/ProgettiAndroid/Traduttore/app/src/main/res/layout/activity_impostazioni.xml" value="0.33" />
+        <entry key="..\:/ProgettiAndroid/Traduttore/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/ProgettiAndroid/Traduttore/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22552083333333334" />
       </map>
     </option>

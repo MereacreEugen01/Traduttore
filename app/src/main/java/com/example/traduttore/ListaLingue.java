@@ -17,14 +17,13 @@ public class ListaLingue
         listaLinguePrima.put("Italiano", "IT");
         listaLinguePrima.put("Francese", "FR");
         listaLinguePrima.put("Spagnolo", "ES");
-
+        listaLinguePrima.put("Tedesco", "DE");
+        listaLinguePrima.put("Cinese", "ZH");
+        listaLinguePrima.put("Giapponese", "JA");
     }
 
     public String getLinguaScelta(String scelta)
     {
         return listaLinguePrima.get(scelta);
     }
-
-
-
 }
