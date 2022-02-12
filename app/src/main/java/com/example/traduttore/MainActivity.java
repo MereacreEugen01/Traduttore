@@ -3,11 +3,14 @@ package com.example.traduttore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.io.UnsupportedEncodingException;
@@ -51,12 +54,13 @@ public class MainActivity extends AppCompatActivity
         //testoTradotto.setText(testoDaTradurre.getText());
         //testoDaTradurre.setHint("Testo Da tradurre:");
         // ;
-        System.out.println("Lingua inserita:");
-        System.out.println(sceltaLinguaPartenza.getSelectedItem().toString());
-        System.out.println(convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()));
-        System.out.println("Lingua desiderata:");
-        System.out.println(sceltaLinguaArrivo.getSelectedItem().toString());
-        System.out.println(convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()));
+
+        Log.d("decode", encodeValue("Ciao come stai"));
+        Log.d("config","Lingua inserita: "+ sceltaLinguaPartenza.getSelectedItem().toString() + ": "+
+                convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()));
+        Log.d("config", "Lingua desiderata:" + sceltaLinguaArrivo.getSelectedItem().toString() + ": "+
+                convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()));
+
 
         String prova = testoDaTradurre.getText().toString();
         /*
@@ -75,6 +79,16 @@ public class MainActivity extends AppCompatActivity
             return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
         } catch (UnsupportedEncodingException ex) {
             throw new RuntimeException(ex.getCause());
+        }
+    }
+    public static String decodeValue(String value)
+    {
+        try {
+           return new String(value.getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            {
+                throw new RuntimeException(ex.getCause());
+            }
         }
     }
 
@@ -105,12 +119,10 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onResponse(String response)
                     {
-                        // Display the first 500 characters of the response string.
-                       // textView.setText("Response is: "+ response.substring(0,500));
                         Log.d("API", response);
                         String traduzione = response.substring(response.indexOf("\"text\":\"")+8, response.indexOf("\"}]}"));
-                        testoTradotto.setText(traduzione);
-
+                        //String t = null;
+                        testoTradotto.setText(decodeValue(traduzione));
                     }
                 },
                 new Response.ErrorListener()
@@ -120,14 +132,9 @@ public class MainActivity extends AppCompatActivity
                     {
                         //System.out.println("c'è stato un errore");
                         Log.e("API",error.getLocalizedMessage());
-
                     }
-
                 }
         );
         queue.add(richiesta);
-
     }
-
-
 }
