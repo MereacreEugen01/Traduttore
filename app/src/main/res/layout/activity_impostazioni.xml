@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2F4550"
     tools:context=".Impostazioni">
 
 
     <Spinner
         android:id="@+id/linguaPartenza"
-        android:layout_width="150dp"
+        android:layout_width="128dp"
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
+        android:background="#557278"
         android:entries="@array/linguaPartenza"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -22,10 +24,11 @@
 
     <Spinner
         android:id="@+id/linguaArrivo"
-        android:layout_width="150dp"
+        android:layout_width="128dp"
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
+        android:background="#557278"
         android:entries="@array/linguaArrivo"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -72,14 +75,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp" />
+        app:layout_constraintGuide_end="7dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="7dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -119,9 +122,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/key"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="match_parent"
-            android:hint="hint"
+            android:background="#557278"
+            android:editable="false"
+            android:hint="API Key"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -130,8 +137,10 @@
         android:id="@+id/buttonsave"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:backgroundTint="#7A9E9F"
         android:onClick="onClickSave"
         android:text="Salva"
+        app:cornerRadius="10dip"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
@@ -145,10 +154,12 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:onClick="onClickScambia"
+        app:backgroundTint="#7A9E9F"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/linguaArrivo"
         app:layout_constraintStart_toEndOf="@+id/linguaPartenza"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
-        app:srcCompat="@drawable/switchlingue" />
+        app:srcCompat="@drawable/switchlingue"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
