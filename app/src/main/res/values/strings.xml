@@ -1,5 +1,8 @@
 <resources>
+
     <string name="app_name">Traduttore</string>
+    <string name="scambia">⭾</string>
+
 
     <string-array name="linguaPartenza">
         <item>Rileva lingua</item>
@@ -7,6 +10,9 @@
         <item>Italiano</item>
         <item>Francese</item>
         <item>Spagnolo</item>
+        <item>Tedesco</item>
+        <item>Cinese</item>
+        <item>Giapponese</item>
     </string-array>
 
     <string-array name="linguaArrivo">

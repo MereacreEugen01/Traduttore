@@ -16,7 +16,6 @@
         android:entries="@array/linguaPartenza"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -30,7 +29,6 @@
         android:entries="@array/linguaArrivo"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -113,7 +111,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="355dp"
-        android:layout_height="55dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -122,7 +120,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/key"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="hint"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp" />
@@ -138,5 +136,19 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bottoneScambio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        android:onClick="onClickScambia"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/linguaArrivo"
+        app:layout_constraintStart_toEndOf="@+id/linguaPartenza"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:srcCompat="@drawable/switchlingue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
