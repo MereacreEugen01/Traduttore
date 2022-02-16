@@ -13,6 +13,24 @@
         <item>Tedesco</item>
         <item>Cinese</item>
         <item>Giapponese</item>
+        <item>Bulgaro</item>
+        <item>Ceco</item>
+        <item>Danese</item>
+        <item>Greco</item>
+        <item>Estone</item>
+        <item>Fillandese</item>
+        <item>Ungerese</item>
+        <item>Lituano</item>
+        <item>Lettone</item>
+        <item>Olandese</item>
+        <item>Polacco</item>
+        <item>Portoghese</item>
+        <item>Rumeno</item>
+        <item>Russo</item>
+        <item>Slovacco</item>
+        <item>Sloveno</item>
+        <item>Svedese</item>
+
     </string-array>
 
     <string-array name="linguaArrivo">
@@ -23,6 +41,23 @@
         <item>Tedesco</item>
         <item>Cinese</item>
         <item>Giapponese</item>
+        <item>Bulgaro</item>
+        <item>Ceco</item>
+        <item>Danese</item>
+        <item>Greco</item>
+        <item>Estone</item>
+        <item>Fillandese</item>
+        <item>Ungerese</item>
+        <item>Lituano</item>
+        <item>Lettone</item>
+        <item>Olandese</item>
+        <item>Polacco</item>
+        <item>Portoghese</item>
+        <item>Rumeno</item>
+        <item>Russo</item>
+        <item>Slovacco</item>
+        <item>Sloveno</item>
+        <item>Svedese</item>
 
     </string-array>
 

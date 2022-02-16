@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity
 
     }
     public void onClickTraduci(View arg0) throws MalformedURLException {
-        //testoTradotto.setText(testoDaTradurre.getText());
-        //testoDaTradurre.setHint("Testo Da tradurre:");
-        // ;
+
         SharedPreferences s = getSharedPreferences("settings", MODE_PRIVATE);
         String c = s.getString("key", "d17b9f49-8ee1-06a3-161a-8cb2a513ae10:fx");
 

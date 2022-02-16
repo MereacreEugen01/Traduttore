@@ -76,6 +76,7 @@
         android:entries="@array/linguaPartenza"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/bottoneScambio"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -87,10 +88,11 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:background="#557278"
-        android:textColor="#FFFFFF"
         android:entries="@array/linguaArrivo"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/bottoneScambio"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -184,8 +186,8 @@
         android:onClick="onClickScambia"
         app:backgroundTint="#7A9E9F"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/linguaArrivo"
-        app:layout_constraintStart_toEndOf="@+id/linguaPartenza"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         app:srcCompat="@drawable/switchlingue"
         tools:ignore="SpeakableTextPresentCheck" />
