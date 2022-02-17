@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2F4550"
-    android:onClick="onClickImposta"
     tools:context=".MainActivity">
     <!--
        <TextView
@@ -89,7 +88,6 @@
         android:layout_marginBottom="50dp"
         android:background="#557278"
         android:entries="@array/linguaArrivo"
-        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toEndOf="@+id/bottoneScambio"

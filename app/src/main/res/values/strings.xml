@@ -3,7 +3,6 @@
     <string name="app_name">Traduttore</string>
     <string name="scambia">⭾</string>
 
-
     <string-array name="linguaPartenza">
         <item>Rileva lingua</item>
         <item>Inglese</item>

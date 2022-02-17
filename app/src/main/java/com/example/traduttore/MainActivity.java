@@ -22,7 +22,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.net.MalformedURLException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -38,81 +40,32 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.testoDaTradurre = (TextInputEditText) findViewById(R.id.testoDaTradurre);
-        this.testoTradotto = (TextInputEditText) findViewById(R.id.testoTradotto);
-        this.sceltaLinguaPartenza = (Spinner) findViewById((R.id.linguaPartenza));
-        this.sceltaLinguaArrivo = (Spinner) findViewById((R.id.linguaArrivo));
+        this.testoDaTradurre = findViewById(R.id.testoDaTradurre);
+        this.testoTradotto =  findViewById(R.id.testoTradotto);
+        this.sceltaLinguaPartenza = findViewById((R.id.linguaPartenza));
+        this.sceltaLinguaArrivo = findViewById((R.id.linguaArrivo));
 
         SharedPreferences s = getSharedPreferences("settings", MODE_PRIVATE);
         int a = s.getInt("source", 0);
         int b = s.getInt("target", 1);
-        String c = s.getString("key", "d17b9f49-8ee1-06a3-161a-8cb2a513ae10:fx");
 
         ((Spinner)findViewById(R.id.linguaPartenza)).setSelection(a);
         ((Spinner)findViewById(R.id.linguaArrivo)).setSelection(b);
 
 
     }
-    public void onClickTraduci(View arg0) throws MalformedURLException {
+    public void onClickTraduci(View arg0) {
 
         SharedPreferences s = getSharedPreferences("settings", MODE_PRIVATE);
         String c = s.getString("key", "d17b9f49-8ee1-06a3-161a-8cb2a513ae10:fx");
 
-
-        Log.d("decode", encodeValue("Ciao come stai"));
-        Log.d("config","Lingua inserita: "+ sceltaLinguaPartenza.getSelectedItem().toString() + ": "+
-                convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()));
-        Log.d("config", "Lingua desiderata:" + sceltaLinguaArrivo.getSelectedItem().toString() + ": "+
-                convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()));
-
-
         String prova = testoDaTradurre.getText().toString();
-        /*
-        URL traduttore = new URL(prova);
-        System.out.println(traduttore.toString());
-        */
+
         String encodedQuery = encodeValue(prova);
         System.out.println(encodedQuery);
 
         inviaRichiesta(encodeValue(prova), convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()), convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()), c);
 
-    }
-
-    public void onClickImposta(View arg0)
-    {
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-            return;
-        }
-        mLastClickTime = SystemClock.elapsedRealtime();
-        Intent i = new Intent(this, Impostazioni.class);
-        startActivity(i);
-    }
-    public void onClickScambia(View arg0)
-    {
-        int sceltaUno = sceltaLinguaPartenza.getSelectedItemPosition();
-        int sceltaDue = sceltaLinguaArrivo.getSelectedItemPosition();
-        sceltaLinguaPartenza.setSelection(sceltaDue+1);
-        sceltaLinguaArrivo.setSelection(sceltaUno-1);
-    }
-
-
-    private static String encodeValue(String value)
-    {
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException(ex.getCause());
-        }
-    }
-    public static String decodeValue(String value)
-    {
-        try {
-           return new String(value.getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-            {
-                throw new RuntimeException(ex.getCause());
-            }
-        }
     }
 
     private void inviaRichiesta(String testoDaTradurre, String target_lang, String source_lang, String auth_key)
@@ -143,9 +96,16 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onResponse(String response)
                     {
-                        Log.d("API", response);
-                        String traduzione = response.substring(response.indexOf("\"text\":\"")+8, response.indexOf("\"}]}"));
-                        testoTradotto.setText(decodeValue(traduzione));
+                        try {
+                            JSONObject risposaJSON = new JSONObject(response);
+                            JSONArray a = risposaJSON.getJSONArray("translations");
+                            JSONObject testoJSON = a.getJSONObject(0);
+                            String testoTradorro = (decodeValue(testoJSON.getString("text")));
+                            testoTradotto.setText(testoTradorro);
+
+                        } catch (JSONException jsonException) {
+                            jsonException.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener()
@@ -159,5 +119,41 @@ public class MainActivity extends AppCompatActivity
                 }
         );
         queue.add(richiesta);
+    }
+
+    public void onClickImposta(View arg0)
+    {
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
+        Intent i = new Intent(this, Impostazioni.class);
+        startActivity(i);
+    }
+    public void onClickScambia(View arg0)
+    {
+        int sceltaUno = sceltaLinguaPartenza.getSelectedItemPosition();
+        int sceltaDue = sceltaLinguaArrivo.getSelectedItemPosition();
+        sceltaLinguaPartenza.setSelection(sceltaDue+1);
+        sceltaLinguaArrivo.setSelection(sceltaUno-1);
+    }
+
+    private static String encodeValue(String value)
+    {
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
+    }
+    public static String decodeValue(String value)
+    {
+        try {
+            return new String(value.getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            {
+                throw new RuntimeException(ex.getCause());
+            }
+        }
     }
 }
