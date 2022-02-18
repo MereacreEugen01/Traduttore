@@ -55,17 +55,17 @@ public class MainActivity extends AppCompatActivity
 
     }
     public void onClickTraduci(View arg0) {
-
+        //ottenimenoto testo e impostazioni lingua
         SharedPreferences s = getSharedPreferences("settings", MODE_PRIVATE);
         String c = s.getString("key", "d17b9f49-8ee1-06a3-161a-8cb2a513ae10:fx");
-
-        String prova = testoDaTradurre.getText().toString();
-
-        String encodedQuery = encodeValue(prova);
-        System.out.println(encodedQuery);
-
-        inviaRichiesta(encodeValue(prova), convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()), convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()), c);
-
+        String testo = testoDaTradurre.getText().toString();
+        //trasformo il testo in modo che gli spazi e i caratteri speciali non creino errore
+        //String encodedQuery = encodeValue(testo);
+        //utlizzo la funzione per inviare effettivamente la richiesta
+        inviaRichiesta(encodeValue(testo),
+                convertitore.getLinguaScelta(sceltaLinguaArrivo.getSelectedItem().toString()),
+                convertitore.getLinguaScelta(sceltaLinguaPartenza.getSelectedItem().toString()),
+                c);
     }
 
     private void inviaRichiesta(String testoDaTradurre, String target_lang, String source_lang, String auth_key)
@@ -130,10 +130,13 @@ public class MainActivity extends AppCompatActivity
         Intent i = new Intent(this, Impostazioni.class);
         startActivity(i);
     }
+
     public void onClickScambia(View arg0)
     {
         int sceltaUno = sceltaLinguaPartenza.getSelectedItemPosition();
         int sceltaDue = sceltaLinguaArrivo.getSelectedItemPosition();
+        //da notare che vi è un +1 -1 perché le voci delle lingue di
+        //origine sono una di più riespetto a quelle di destinazione
         sceltaLinguaPartenza.setSelection(sceltaDue+1);
         sceltaLinguaArrivo.setSelection(sceltaUno-1);
     }
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity
             throw new RuntimeException(ex.getCause());
         }
     }
+
     public static String decodeValue(String value)
     {
         try {

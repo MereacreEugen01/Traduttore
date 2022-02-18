@@ -56,6 +56,4 @@ public class Impostazioni extends AppCompatActivity {
         sceltaLinguaPartenza.setSelection(sceltaDue+1);
         sceltaLinguaArrivo.setSelection(sceltaUno-1);
     }
-
-
 }
